@@ -43,9 +43,12 @@ jobs:
       - run: flutter build apk --release
       #- run: flutter build appbundle
       - name: Create a Release APK
-        uses: ncipollo/release-action@v1
+        uses: actions/upload-artifact@v1
         with:
+          name: release-apk
+          path: build/app/outputs/apk/release/app-release.apk
+        #uses: ncipollo/release-action@v1
+        #with:
           #artifacts: "build/app/outputs/apk/release/*.apk"
-          artifacts: "release.tar.gz,foo/*.txt"
-          token: ${{ secrets.TOKEN }}
-          tag: v1.0.${{ github.run_number }}
+          #token: ${{ secrets.TOKEN }}
+          #tag: v1.0.${{ github.run_number }}
