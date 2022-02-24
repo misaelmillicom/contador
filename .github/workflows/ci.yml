@@ -35,8 +35,8 @@ jobs:
         with:
           host: github.com
           private-key: ${{ secrets.SSH_PRIVATE_KEY_AUTH0 }}
-        run: |
-          ssh -T git@github.com
+      - name: Clone repository
+        run: git clone https://github.com/Millicom-MFS/AuthModule-Mobile.git
       - uses: actions/setup-java@v2
         with:
           distribution: "zulu"
