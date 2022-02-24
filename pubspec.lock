@@ -8,6 +8,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.2"
+  auth0:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "24f08d1bd569254315a0e0dc1c2bc1199cb6cfcf"
+      url: "https://github.com/Millicom-MFS/AuthModule-Mobile"
+    source: git
+    version: "0.0.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -74,6 +83,20 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  http:
+    dependency: transitive
+    description:
+      name: http
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.13.4"
+  http_parser:
+    dependency: transitive
+    description:
+      name: http_parser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.0"
   lints:
     dependency: transitive
     description:
@@ -186,4 +209,4 @@ packages:
     version: "2.1.1"
 sdks:
   dart: ">=2.16.1 <3.0.0"
-  flutter: ">=1.16.0"
+  flutter: ">=1.17.0"
