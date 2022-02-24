@@ -23,6 +23,8 @@ jobs:
     name: release apk
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       JAVA_VERSION: "11.0"
       FLUTTER_VERSION: "2.10.1"
@@ -43,6 +45,8 @@ jobs:
       - name: Create a Release APK
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/apk/release/*.apk"
+          #artifacts: "build/app/outputs/apk/release/*.apk"
+          artifacts: "release.tar.gz,foo/*.txt"
+          bodyFile: "body.md"
           token: ${{ secrets.TOKEN }}
           tag: v1.0.${{ github.run_number }}
