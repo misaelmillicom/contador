@@ -31,12 +31,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup SSH
-      uses: MrSquaare/ssh-setup-action@v1
-      with:
-        host: github.com
-        private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      run: |
-        ssh -T git@github.com
+        uses: MrSquaare/ssh-setup-action@v1
+        with:
+          host: github.com
+          private-key: ${{ secrets.SSH_PRIVATE_KEY_AUTH0 }}
+        run: |
+          ssh -T git@github.com
       - uses: actions/setup-java@v2
         with:
           distribution: "zulu"
