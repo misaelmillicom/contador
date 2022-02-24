@@ -35,13 +35,7 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY_AUTH0 }}
           name: id_rsa-auth0
-          known_hosts: github.com
-          config: |
-            Host github.com
-              HostName github.com
-              PreferredAuthentications publickey
-              User git
-              IdentityFile ~/.ssh/id_rsa-auth0
+          known_hosts: just-a-placeholder-so-we-dont-get-errors
           run: |
             ssh -T git@github.com
       - uses: actions/setup-java@v2
