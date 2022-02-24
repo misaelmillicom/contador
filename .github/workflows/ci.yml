@@ -30,6 +30,20 @@ jobs:
       FLUTTER_VERSION: "2.10.1"
     steps:
       - uses: actions/checkout@v2
+      - name: Install SSH key of auth0
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY_AUTH0 }}
+          name: id_rsa-auth0
+          known_hosts: github.com
+          config: |
+            Host github.com
+              HostName github.com
+              PreferredAuthentications publickey
+              User git
+              IdentityFile ~/.ssh/id_rsa-auth0
+          run: |
+            ssh -T git@github.com
       - uses: actions/setup-java@v2
         with:
           distribution: "zulu"
@@ -49,6 +63,6 @@ jobs:
           path: build/app/outputs/apk/release/app-release.apk
         #uses: ncipollo/release-action@v1
         #with:
-          #artifacts: "build/app/outputs/apk/release/*.apk"
-          #token: ${{ secrets.TOKEN }}
-          #tag: v1.0.${{ github.run_number }}
+        #artifacts: "build/app/outputs/apk/release/*.apk"
+        #token: ${{ secrets.TOKEN }}
+        #tag: v1.0.${{ github.run_number }}
