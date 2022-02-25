@@ -30,18 +30,24 @@ jobs:
       FLUTTER_VERSION: "2.10.1"
     steps:
       - uses: actions/checkout@v2
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
+      # - name: Install SSH key
+      #   uses: shimataro/ssh-key-action@v2
+      #   with:
+      #     key: ${{ secrets.SSH_PRIVATE_KEY_AUTH0 }}
+      #     known_hosts: github.com
+      #     name: id_rsa-auth0
+      #     config: |
+      #       Host github.com
+      #       HostName github.com
+      #       User git
+      #       IdentityFile ~/.ssh/id_rsa-auth0
+      - name: Setup SSH
+        uses: MrSquaare/ssh-setup-action@v1
         with:
-          key: ${{ secrets.SSH_PRIVATE_KEY_AUTH0 }}
-          known_hosts: github.com
-          name: id_rsa-auth0
-          config: |
-            Host github.com
-            HostName github.com
-            User git
-            IdentityFile ~/.ssh/id_rsa-auth0
-
+          host: github.com
+          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Clone repository
+        run: git clone git@github.com:Millicom-MFS/AuthModule-Mobile.git
       - uses: actions/setup-java@v2
         with:
           distribution: "zulu"
