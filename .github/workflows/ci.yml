@@ -35,7 +35,12 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY_AUTH0 }}
           known_hosts: github.com
-          name: id_rsa
+          name: id_rsa-auth0
+          config: |
+            Host github.com
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_rsa-auth0
 
       - uses: actions/setup-java@v2
         with:
